@@ -12,45 +12,44 @@
     }
     else
     {
-        <input id="hiddenUserId" style="display:none;" value="@HttpContext.Current.User.Identity.GetUserId()">
+        <form name="form">
+            <div class="row">
+                <div class="col-md-6">
 
-        <div class="row">
-            <div class="col-md-6">
-
-                <h3>Select Coin</h3>
-                <input type="text" ng-model="AddCoinsCtr.selected"
-                       uib-typeahead="coin for coin in AddCoinsCtr.coinArrayNames | filter:$viewValue | limitTo:8"
-                       typeahead-no-results="noResults" typeahead-wait-ms="250"
-                       ng-click="AddCoinsCtr.test()">
-                <div ng-show="noResults">
-                    <i class="glyphicon glyphicon-remove"></i> No Tradeable Coin Found
+                    <h3>Select Coin</h3>
+                    <input type="text" ng-model="AddCoinsCtr.selected"
+                           uib-typeahead="coin for coin in AddCoinsCtr.coinArrayNames | filter:$viewValue | limitTo:8"
+                           typeahead-no-results="noResults" typeahead-wait-ms="250"
+                           ng-click="AddCoinsCtr.test()" required>
+                    <div ng-show="noResults">
+                        <i class="glyphicon glyphicon-remove"></i> No Tradeable Coin Found
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <h3>Number Purchased</h3>
-                <input type="number" ng-model="AddCoinsCtr.inputs.numberPurchased">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Number Purchased</h3>
+                    <input type="number" ng-model="AddCoinsCtr.inputs.numberPurchased" required>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <h3>Price Per Coin</h3>
-                <input type="number" ng-model="AddCoinsCtr.inputs.currentPrice">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Price Per Coin</h3>
+                    <input type="number" ng-model="AddCoinsCtr.inputs.currentPrice" required>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6" style="margin-top:1%;">
-                <button ng-click="AddCoinsCtr.send()" class="btn">Send</button>
+            <div class="row">
+                <div class="col-md-6" style="margin-top:1%;">
+                    <button ng-click="AddCoinsCtr.send()" ng-disabled="form.$invalid" class="btn">Send</button>
+                </div>
             </div>
-        </div>
-
+        </form>
     }
 </div>
 
 @section scripts {
 
-    <script src="~/Scripts/UserMain/AddCoinsService.js"></script>
+
     <script src="~/Scripts/UserMain/AddCoinsController.js"></script>
 
 

@@ -22,13 +22,31 @@ namespace CoinViewer.Controllers.Api
         {
             if (!ModelState.IsValid)
             {
-                //daniel was here
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
             try
             {
                 SuccessResponse resp = new SuccessResponse();
                 coinsService.AddCoins(model);
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+
+        [Route("user/history"), HttpPost]
+        public HttpResponseMessage AddHistory(TradeHistoryAddRequest model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+            try
+            {
+                ItemResponse<int> resp = new ItemResponse<int>();
+                resp.Item = coinsService.AddHistory(model);
                 return Request.CreateResponse(HttpStatusCode.OK, resp);
             }
             catch (Exception ex)
@@ -65,6 +83,36 @@ namespace CoinViewer.Controllers.Api
             {
                 ItemsResponse<Coin> resp = new ItemsResponse<Coin>();
                 resp.Items = coinsService.SelectAllCoinNames();
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+
+        [Route("user/allCoins"), HttpGet]
+        public HttpResponseMessage GetAllUserCoins()
+        {
+            try
+            {
+                ItemsResponse<AllCoins> resp = new ItemsResponse<AllCoins>();
+                resp.Items = coinsService.GetAllUserCoins();
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+
+        [Route("user/investmentNumbers"), HttpGet]
+        public HttpResponseMessage GetUserInvestmentNumbers()
+        {
+            try
+            {
+                ItemResponse<InvestmentNumbers> resp = new ItemResponse<InvestmentNumbers>();
+                resp.Item = coinsService.GetInvestmentNumbers();
                 return Request.CreateResponse(HttpStatusCode.OK, resp);
             }
             catch (Exception ex)

@@ -3,9 +3,9 @@
     angular
         .module('mainApp')
         .controller('AddCoinsController', AddCoinsController);
-    AddCoinsController.$inject = ['$scope', '$window', '$addCoinsService', 'toastr'];
+    AddCoinsController.$inject = ['$scope', '$window', '$genericService', 'toastr'];
 
-    function AddCoinsController($scope, $window, $addCoinsService, toastr) {
+    function AddCoinsController($scope, $window, $genericService, toastr) {
 
         var vm = this;
         vm.$window = $window;
@@ -13,36 +13,33 @@
         vm.inputs = {};
         vm.selectedOwned = undefined;
         vm.$onInit = _init;
-        vm.$addCoinsService = $addCoinsService;
+        vm.$genericService = $genericService;
         vm.coinArrayNames = [];
         vm.coinArrayIds = [];
-
         vm.currentPrice = undefined;
         vm.send = _send;
         vm.toastr = toastr;
-        
+
+        //vm.symbolArray = [];
+        //vm.coinArray = [];
         //vm.coinPayload = {};
         //vm.duration = undefined;
         //vm.count = 0;
-        //vm.storeMarketCoinNames= _storeMarketCoinNames
+        //vm.storeMarketCoinNames = _storeMarketCoinNames;
 
-        //console.log($('#hiddenUserId').val());
 
         function _init() {
             
-            vm.$addCoinsService.getAllCoinNames()
-                .then(_getAllCoinNamesSuccess, _getAllCoinNamesFail);
+            vm.$genericService.getAllCoinNames()
+                .then(_getAllCoinNamesSuccess, _callFail);
         }
         function _getAllCoinNamesSuccess(data) {
-            vm.coinInfo = data.data.Items;
+            vm.coinInfo = data.Items;
             for (var i = 0; i < vm.coinInfo.length; i++) {
                 vm.coinArrayNames.push(vm.coinInfo[i].CoinName);
                 vm.coinArrayIds.push(vm.coinInfo[i].Id);
             }
             console.log(vm.coinArrayNames);
-        }
-        function _getAllCoinNamesFail(error) {
-            console.log(error);
         }
 
         function _send() {        
@@ -51,33 +48,62 @@
             {
                 vm.toastr.error("Please select a coin from the list");
             }
+            else if (vm.inputs.numberPurchased <= 0 || vm.inputs.currentPrice <= 0) {
+                vm.toastr.error("Please input a correct number");
+            }
             else {
                 vm.inputs.coinId = vm.coinArrayIds[coinIndex];
                 console.log(vm.inputs);
-                vm.$addCoinsService.postAddCoins(vm.inputs)
-                    .then(_postAddCoinsSuccess, _postAddCoinsFail);
+                vm.$genericService.postAddCoins(vm.inputs)
+                    .then(_postAddCoinsSuccess, _callFail);
                 
             }
         }
         function _postAddCoinsSuccess(data) {
             console.log(data);
-            vm.toastr.success(" Success.");
+            vm.inputs.TransactionType = "Buy";
+            vm.$genericService.postHistory(vm.inputs)
+                .then(_postHistorySuccess, _callFail);           
         }
-        function _postAddCoinsFail(error) {
+        function _postHistorySuccess(data) {
+            console.log(data);
+            vm.toastr.success(" Success.");
+            vm.inputs = null;
+            vm.selected = null;
+        }
+
+        function _callFail(error) {
             console.log(error);
         }
 
+
+
+        //function _init() {
+        //    vm.$genericService.getCoinMarketData()
+        //        .then(_getCoinMarketDataSuccess, _callFail);
+        //}
+        //function _getCoinMarketDataSuccess(data) {
+        //    console.log(data);
+        //    for (var i = 0; i < data.length; i++) {
+        //        vm.coinArray[i] = data[i].name + " (" + data[i].symbol + ")";
+        //        vm.symbolArray[i] = data[i].symbol;
+        //    }
+        //    console.log(vm.coinArray);
+        //    console.log(vm.symbolArray);
+        //}
         //function _storeMarketCoinNames() {
         //    vm.duration = vm.coinArray.length;
-        //    vm.coinPayload.CoinName = vm.coinArray[vm.count];
-        //    vm.$addCoinsService.postCoinName(vm.coinPayload)
+        //    vm.coinPayload.coinName = vm.coinArray[vm.count];
+        //    vm.coinPayload.symbol = vm.symbolArray[vm.count];
+
+        //    vm.$genericService.postCoinName(vm.coinPayload)
         //        .then(_storeMarketCoinNamesSuccess, _storeMarketCoinNamesFail);
         //}
         //function _storeMarketCoinNamesSuccess(data) {
         //    console.log(data);
         //    vm.count++;
         //    if (vm.count < vm.duration) {
-        //        _send();
+        //        _storeMarketCoinNames();
         //    }
         //}
         //function _storeMarketCoinNamesFail(error) {

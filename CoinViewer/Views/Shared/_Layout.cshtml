@@ -16,6 +16,7 @@
 
     <script src="~/Scripts/mainApp.js"></script>
     <script src="~/Scripts/UserMain/NavbarController.js"></script>
+    <script src="~/Scripts/UserMain/GenericService.js"></script>
 </head>
 <body>
     @using Microsoft.AspNet.Identity
@@ -60,10 +61,10 @@
             <div class="navbar">
                 <div class="container">
                     <ul class="nav navbar-nav">
-                        <li>Invested: ${{NavbarCtr.Invested}}</li>
-                        <li>Current Coins Value: ${{NavbarCtr.CurrentCoins}}</li>
-                        <li>Revenue: ${{NavbarCtr.Revenue}}</li>
-                        <li>Current Net Worth: ${{NavbarCtr.CurrentNet}}</li>
+                        <li>Invested: ${{NavbarCtr.invested}}</li>
+                        <li>Current Coins Value: ${{NavbarCtr.currentCoins}}</li>
+                        <li>Revenue: ${{NavbarCtr.revenue}}</li>
+                        <li>Current Net Worth: ${{NavbarCtr.currentNet}}</li>
                     </ul>
 
                 </div>

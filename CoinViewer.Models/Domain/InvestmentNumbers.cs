@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace CoinViewer.Models.Domain
 {
-    public class Coin
+    public class InvestmentNumbers
     {
-        public int Id { get; set; }
-        public string CoinName { get; set; }
-        public string Symbol { get; set; }
+        public double Invested { get; set; }
+        public double Revenue { get; set; }
     }
 }

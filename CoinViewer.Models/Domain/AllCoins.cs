@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoinViewer.Models.Requests
+namespace CoinViewer.Models.Domain
 {
-    public class CoinNameAddRequest
+    public class AllCoins
     {
         public string CoinName { get; set; }
         public string Symbol { get; set; }
-
+        public double NumberOfCoins { get; set; }
     }
 }

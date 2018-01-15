@@ -9,8 +9,8 @@ namespace CoinViewer.Models.Requests
     public class AddCoinsAddRequest
     {
             public int CoinId { get; set; }
-            public int NumberPurchased { get; set; }
-            public int CurrentPrice { get; set; }
+            public double NumberPurchased { get; set; }
+            public double CurrentPrice { get; set; }
     }
 
 
