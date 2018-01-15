@@ -22,6 +22,7 @@ namespace CoinViewer.Controllers.Api
         {
             if (!ModelState.IsValid)
             {
+                //daniel was here
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
             try
