@@ -11,50 +11,67 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.1.3.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="~/Scripts/plugins/angular-toastr.tpls.js"></script>
+    <link href="~/Scripts/plugins/angular-toastr.css" rel="stylesheet" />
+
+    <script src="~/Scripts/mainApp.js"></script>
+    <script src="~/Scripts/UserMain/NavbarController.js"></script>
 </head>
 <body>
-@using Microsoft.AspNet.Identity
-@if (!Request.IsAuthenticated)
-{
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                @Html.ActionLink("Coin Viewer", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                  
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-}
-else
-{
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Coin Viewer", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Add Coins", "AddCoins", "Home")</li>
-                    <li>@Html.ActionLink("Remove Coins", "RemoveCoins", "Home")</li>
-                    <li>@Html.ActionLink("History", "History", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+    @using Microsoft.AspNet.Identity
+    @if (!Request.IsAuthenticated)
+    {
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    @Html.ActionLink("Coin Viewer", "Dashboard", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav"></ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
         </div>
-    </div>
-}
-   
+    }
+    else
+    {
+        <div class="ng-cloak" ng-controller="NavbarController as NavbarCtr">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @Html.ActionLink("Coin Viewer", "Dashboard", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
+                            <li>@Html.ActionLink("Add Coins", "AddCoins", "Home")</li>
+                            <li>@Html.ActionLink("Sell Coins", "SellCoins", "Home")</li>
+                            <li>@Html.ActionLink("History", "History", "Home")</li>
+                        </ul>
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+            </div>
+            <div class="navbar">
+                <div class="container">
+                    <ul class="nav navbar-nav">
+                        <li>Invested: ${{NavbarCtr.Invested}}</li>
+                        <li>Current Coins Value: ${{NavbarCtr.CurrentCoins}}</li>
+                        <li>Revenue: ${{NavbarCtr.Revenue}}</li>
+                        <li>Current Net Worth: ${{NavbarCtr.CurrentNet}}</li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+    }
+
     <div class="container body-content">
         @RenderBody()
         <hr />

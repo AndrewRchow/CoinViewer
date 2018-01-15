@@ -1,0 +1,28 @@
+﻿
+<div class='container-fluid ng-cloak' ng-controller="SellCoinsController as SellCoinsCtr">
+    @using Microsoft.AspNet.Identity
+    @if (!Request.IsAuthenticated)
+    {
+        <h1>Please Login</h1>
+        <h4></h4>
+        <br />
+        <h5>Guest user login info:</h5>
+        <p>Email: <span style="color:blue;font-weight:bold">  qwe@qwe.com</span></p>
+        <p>Password: <span style="color:blue;font-weight:bold">qweQ123!</span></p>
+    }
+    else
+    {
+        <h2>Remove Coins</h2>
+        <h3>Remove Coins</h3>
+
+        <p>Use this area to provide additional information.</p>
+    }
+
+    </div>
+@section scripts {
+
+    <script src="~/Scripts/UserMain/SellCoinsController.js"></script>
+
+
+
+}

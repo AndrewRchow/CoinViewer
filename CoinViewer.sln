@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinViewer.web", "CoinViewer\CoinViewer.web.csproj", "{22376460-5AA0-4E98-BCD4-CE1C0439E7B9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinViewer.Services", "ClassLibrary1\CoinViewer.Services.csproj", "{6D4AC0F5-07AF-419B-BFD0-A6D9E08B6A50}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinViewer", "CoinViewer\CoinViewer.csproj", "{22376460-5AA0-4E98-BCD4-CE1C0439E7B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinViewer.Models", "CoinViewer.Models\CoinViewer.Models.csproj", "{75C17B8F-3AC7-41C3-8D12-B98F1D88A4C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinViewer.Services", "CoinViewer.Services\CoinViewer.Services.csproj", "{D05F0D34-F7AE-4BD2-AE44-C63FFC051CBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{22376460-5AA0-4E98-BCD4-CE1C0439E7B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22376460-5AA0-4E98-BCD4-CE1C0439E7B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22376460-5AA0-4E98-BCD4-CE1C0439E7B9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6D4AC0F5-07AF-419B-BFD0-A6D9E08B6A50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6D4AC0F5-07AF-419B-BFD0-A6D9E08B6A50}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6D4AC0F5-07AF-419B-BFD0-A6D9E08B6A50}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6D4AC0F5-07AF-419B-BFD0-A6D9E08B6A50}.Release|Any CPU.Build.0 = Release|Any CPU
 		{75C17B8F-3AC7-41C3-8D12-B98F1D88A4C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{75C17B8F-3AC7-41C3-8D12-B98F1D88A4C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75C17B8F-3AC7-41C3-8D12-B98F1D88A4C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75C17B8F-3AC7-41C3-8D12-B98F1D88A4C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D05F0D34-F7AE-4BD2-AE44-C63FFC051CBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D05F0D34-F7AE-4BD2-AE44-C63FFC051CBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D05F0D34-F7AE-4BD2-AE44-C63FFC051CBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D05F0D34-F7AE-4BD2-AE44-C63FFC051CBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
