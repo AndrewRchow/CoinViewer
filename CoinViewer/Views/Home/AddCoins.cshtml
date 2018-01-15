@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNet.Identity
+@if (!Request.IsAuthenticated)
+{
+    <h1>Please Login</h1>
+    <h4></h4>
+    <br />
+    <h5>Guest user login info:</h5>
+    <p>Email: <span style="color:blue;font-weight:bold">  qwe@qwe.com</span></p>
+    <p>Password: <span style="color:blue;font-weight:bold">qweQ123!</span></p>
+}
+else
+{
+    <input id="hiddenUserId" style="display:none;" value="@HttpContext.Current.User.Identity.GetUserId()">
+    <div class='container-fluid ng-cloak' ng-controller="AddCoinsController as AddCoinsCtr">
+        <div class="row">
+            <div class="col-md-6">
+
+                <h3>Select Coin</h3>
+                <input type="text" ng-model="AddCoinsCtr.selected"
+                       uib-typeahead="coin for coin in AddCoinsCtr.coinArray | filter:$viewValue | limitTo:8"
+                       typeahead-no-results="noResults" typeahead-wait-ms="250"
+                       ng-click="AddCoinsCtr.test()">
+                <div ng-show="noResults">
+                    <i class="glyphicon glyphicon-remove"></i> No Tradeable Coin Found
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Coins Purchased</h3>
+                <input type="text">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Price Per Coin</h3>
+                <input type="text" ng-model="AddCoinsCtr.currentPrice">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="margin-top:1%;">
+                <button ng-click="AddCoinsCtr.send()" class="btn">Send</button>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts {
+<script src="~/Scripts/plugins/angular-toastr.tpls.js"></script>
+<link href="~/Scripts/plugins/angular-toastr.css" rel="stylesheet" />
+    <script src="~/Scripts/mainApp.js"></script>
+    <script src="~/Scripts/UserMain/AddCoinsService.js"></script>
+    <script src="~/Scripts/UserMain/AddCoinsController.js"></script>
+
+
+
+}
