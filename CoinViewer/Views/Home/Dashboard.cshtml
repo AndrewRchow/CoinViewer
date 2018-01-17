@@ -1,7 +1,6 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
 }
-
 <link href="~/Content/TableTemplate.css" rel="stylesheet" />
 <div class='container-fluid row ng-cloak' ng-controller="DashboardController as DashboardCtr">
     @using Microsoft.AspNet.Identity
@@ -21,25 +20,21 @@
                 </tr>
             </thead>
             <tbody class="table-hover">
-                <tr @*class="row"*@ ng-repeat="x in DashboardCtr.mainArray">
+                <tr class="tableBodyRow" ng-repeat="x in DashboardCtr.mainArray">
                     <td class="text-left">{{x.CoinName}}</td>
                     <td class="text-left">{{x.NumberOfCoins}}</td>
                     <td class="text-left">$ {{x.AverageValue}}</td>
                     <td class="text-left">$ {{x.TotalInvested}}</td>
-                    <td class="text-left">${{x.Price}} <br/>({{x.DifferencePerCoin}})</td>
-                    <td class="text-left">${{x.TotalPrice}} <br/>({{x.PercentChangePerCoin}}%)</td>
+                    <td class="text-left difference">${{x.Price}} <br/>({{x.DifferencePerCoin}})</td>
+                    <td class="text-left percent">${{x.TotalPrice}} <br/>({{x.PercentChangePerCoin}}%)</td>
                 </tr>
                
             </tbody>
         </table>
 
 </div>
-
 @section scripts {
-
 <script src="~/Scripts/UserMain/DashboardController.js"></script>
-
-   
 }
 
 

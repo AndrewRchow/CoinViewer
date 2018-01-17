@@ -38,9 +38,18 @@
                 vm.mainArray[i].TotalInvested = (vm.mainArray[i].NumberOfCoins * vm.mainArray[i].AverageValue).toFixed(2);
                 vm.mainArray[i].DifferencePerCoin = (vm.mainArray[i].Price - vm.mainArray[i].AverageValue).toFixed(4);
                 if (vm.mainArray[i].DifferencePerCoin > 0) {
+                    var childNumb = i + 1;
+                    $("tbody tr:nth-child(" + childNumb + ")").find('.difference').addClass('green');
+                    $("tbody tr:nth-child(" + childNumb + ")").find('.percent').addClass('green');
                     vm.mainArray[i].DifferencePerCoin = "+" + vm.mainArray[i].DifferencePerCoin;
 
                 }
+                if (vm.mainArray[i].DifferencePerCoin < 0) {
+                    var childNumb = i + 1;
+                    $("tbody tr:nth-child(" + childNumb + ")").find('.difference').addClass('red');
+                    $("tbody tr:nth-child(" + childNumb + ")").find('.percent').addClass('red');
+                }
+
                 vm.mainArray[i].PercentChangePerCoin = (((vm.mainArray[i].Price / vm.mainArray[i].AverageValue) - 1) * 100).toFixed(2);
                 if (vm.mainArray[i].PercentChangePerCoin > 0) {
                     vm.mainArray[i].PercentChangePerCoin = "+" + vm.mainArray[i].PercentChangePerCoin;
@@ -50,8 +59,12 @@
 
 
             }
-            console.log('hi');
+      
             console.log(vm.mainArray);
+        
+          
+            console.log('hi');
+        
         }
 
         function _callFail(error) {

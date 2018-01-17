@@ -1,6 +1,6 @@
 ﻿<link href="~/Content/TableTemplate.css" rel="stylesheet" />
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
 }
     @using Microsoft.AspNet.Identity
     @if (!Request.IsAuthenticated)
@@ -25,16 +25,13 @@
                 <td class="text-left">{{x.NumberTraded}}</td>
                 <td class="text-left">$ {{x.CoinPrice}}</td>
                 <td class="text-left">{{x.Date}}</td>
-
             </tr>
-
         </tbody>
     </table>
 </div>
 
 @section scripts {
 <script src="~/Scripts/UserMain/HistoryController.js"></script>
-
 }
 
 

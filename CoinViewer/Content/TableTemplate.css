@@ -1,5 +1,11 @@
 ﻿@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 
+.green {
+    color:green;
+}
+.red {
+    color: red;
+}
 body {
     background: linear-gradient(rgba(38, 51, 61,1), rgba(38, 51, 61,.9));
     background-repeat: no-repeat;

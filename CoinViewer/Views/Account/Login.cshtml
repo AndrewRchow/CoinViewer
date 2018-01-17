@@ -1,7 +1,4 @@
-﻿@{
-    Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
-}
-@using CoinViewer.Models
+﻿@using CoinViewer.Models
 @model LoginViewModel
 @if (Request.IsAuthenticated)
 {
@@ -16,7 +13,6 @@
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-  
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                         <div class="col-md-10">

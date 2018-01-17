@@ -1,7 +1,4 @@
-﻿@{
-    Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
-}
-@model CoinViewer.Models.RegisterViewModel
+﻿@model CoinViewer.Models.RegisterViewModel
 @if (Request.IsAuthenticated)
 {
     Response.Redirect("/home/index");
@@ -22,8 +19,6 @@
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control" , @placeholder = "Password" })
            
                     @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Repeat Password" })
-        
-    
             <div class="form-group">
                 <div class="col-md-10">
                     <input type="submit" class="btn" value="CONNECT" />

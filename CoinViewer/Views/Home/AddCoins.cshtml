@@ -1,6 +1,6 @@
 ﻿<link href="~/Content/AddSellStyles.css" rel="stylesheet" />
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
 }
 @using Microsoft.AspNet.Identity
 @if (!Request.IsAuthenticated)
@@ -11,8 +11,6 @@
     <form name="form">
         <div class="row">
             <div class="col-md-6">
-
-
                 <input type="text" ng-model="AddCoinsCtr.selected" class="form-control" id="firstInput" placeholder="Select Coin:"
                        uib-typeahead="coin for coin in AddCoinsCtr.coinArrayNames | filter:$viewValue | limitTo:5"
                        typeahead-no-results="noResults" typeahead-wait-ms="250" required>
@@ -23,7 +21,6 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-
                 <input class="form-control" type="number" placeholder="Number Purchased"
                        step=any ng-model="AddCoinsCtr.inputs.numberPurchased" required>
             </div>
@@ -41,7 +38,6 @@
             </div>
         </div>
     </form>
-
 </div>
 
 @section scripts {

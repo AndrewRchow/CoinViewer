@@ -1,7 +1,6 @@
-﻿
-<link href="~/Content/AddSellStyles.css" rel="stylesheet" />
+﻿<link href="~/Content/AddSellStyles.css" rel="stylesheet" />
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
 }
     @using Microsoft.AspNet.Identity
     @if (!Request.IsAuthenticated)
@@ -38,12 +37,7 @@
             </div>
         </div>
     </form>
-
 </div>
 @section scripts {
-
     <script src="~/Scripts/UserMain/SellCoinsController.js"></script>
-
-
-
 }
