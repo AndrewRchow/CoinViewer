@@ -335,8 +335,8 @@ textarea {
 }
 
 a {
-  color: #428bca;
-  text-decoration: none;
+    color: rgba(150, 158, 167, 1);
+    text-decoration: none;
 }
 
 a:hover,
@@ -383,10 +383,11 @@ img {
 }
 
 hr {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border: 0;
-  border-top: 1px solid #eeeeee;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+
+    border-top: 1px solid #eeeeee;
 }
 
 .sr-only {

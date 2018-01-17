@@ -1,47 +1,42 @@
-﻿
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/TableTemplate.css" rel="stylesheet" />
 <div class='container-fluid row ng-cloak' ng-controller="DashboardController as DashboardCtr">
     @using Microsoft.AspNet.Identity
     @if (!Request.IsAuthenticated)
     {
-        <h1>Please Login</h1>
-        <h4></h4>
-        <br />
-        <h5>Guest user login info:</h5>
-        <p>Email: <span style="color:blue;font-weight:bold">  qwe@qwe.com</span></p>
-        <p>Password: <span style="color:blue;font-weight:bold">qweQ123!</span></p>
+        Response.Redirect("/Account/Login");
     }
-    else
-    {
+        <table class="table-fill" >
+            <thead>
+                <tr @*class="row"*@>
+                    <th class="text-left">Coin</th>
+                    <th class="text-left"># Owned</th>
+                    <th class="text-left">Purchase Avg</th>
+                    <th class="text-left">Total Spent</th>
+                    <th class="text-left">Current Val.</th>
+                    <th class="text-left">Total Val.</th>
+                </tr>
+            </thead>
+            <tbody class="table-hover">
+                <tr @*class="row"*@ ng-repeat="x in DashboardCtr.mainArray">
+                    <td class="text-left">{{x.CoinName}}</td>
+                    <td class="text-left">{{x.NumberOfCoins}}</td>
+                    <td class="text-left">$ {{x.AverageValue}}</td>
+                    <td class="text-left">$ {{x.TotalInvested}}</td>
+                    <td class="text-left">${{x.Price}} <br/>({{x.DifferencePerCoin}})</td>
+                    <td class="text-left">${{x.TotalPrice}} <br/>({{x.PercentChangePerCoin}}%)</td>
+                </tr>
+               
+            </tbody>
+        </table>
 
-
-
-
-        @*<div class="row">
-                <div class="col-md-4">
-                    <h2>Bleh</h2>
-                    <p>
-                        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                        enables a clean separation of concerns and gives you full control over markup
-                        for enjoyable, agile development.
-                    </p>
-                    <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-                </div>
-                <div class="col-md-4">
-                    <h2>Get more libraries</h2>
-                    <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-                    <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-                </div>
-                <div class="col-md-4">
-                    <h2>Web Hosting</h2>
-                    <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-                    <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-                </div>
-            </div>*@
-    }
 </div>
 
 @section scripts {
-<script src="~/Scripts/UserMain/GenericService.js"></script>
+
 <script src="~/Scripts/UserMain/DashboardController.js"></script>
 
    

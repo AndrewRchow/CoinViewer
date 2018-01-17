@@ -1,17 +1,41 @@
-﻿@using Microsoft.AspNet.Identity
-@if (!Request.IsAuthenticated)
-{
-    <h1>Please Login</h1>
-    <h4></h4>
-    <br />
-    <h5>Guest user login info:</h5>
-    <p>Email: <span style="color:blue;font-weight:bold">  qwe@qwe.com</span></p>
-    <p>Password: <span style="color:blue;font-weight:bold">qweQ123!</span></p>
+﻿<link href="~/Content/TableTemplate.css" rel="stylesheet" />
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-else
-{
-    <h2>History</h2>
-    <h3>Add History</h3>
+    @using Microsoft.AspNet.Identity
+    @if (!Request.IsAuthenticated)
+    {
+        Response.Redirect("/Account/Login");
+    }
+ <div class='container-fluid row ng-cloak' ng-controller="HistoryController as HistoryCtr">
+    <table class="table-fill">
+        <thead>
+            <tr>
+                <th class="text-left">Transaction Type</th>
+                <th class="text-left">Coin</th>
+                <th class="text-left"># Traded</th>
+                <th class="text-left">Coin Price</th>
+                <th class="text-left">Date</th>
+            </tr>
+        </thead>
+        <tbody class="table-hover">
+            <tr ng-repeat="x in HistoryCtr.mainArray">
+                <td class="text-left">{{x.TransactionType}}</td>
+                <td class="text-left">{{x.CoinName}}</td>
+                <td class="text-left">{{x.NumberTraded}}</td>
+                <td class="text-left">$ {{x.CoinPrice}}</td>
+                <td class="text-left">{{x.Date}}</td>
 
-    <p>Use this area to provide additional information.</p>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+@section scripts {
+<script src="~/Scripts/UserMain/HistoryController.js"></script>
+
 }
+
+
+

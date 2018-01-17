@@ -11,7 +11,9 @@
             , getAllCoinNames: _getAllCoinNames
             , postCoinName: _postCoinName
             , postAddCoins: _postAddCoins
+            , postSellCoins: _postSellCoins
             , postHistory: _postHistory
+            , getAllUserHistory: _getAllUserHistory
             , getAllUserCoins: _getAllUserCoins
             , getUserInvestment: _getUserInvestment
         };
@@ -31,8 +33,16 @@
             return $http.post('/api/coin/user/add', data).then(handleSuccess).catch(handleError('Error update status'));
         }
 
+        function _postSellCoins(data) {
+            return $http.post('/api/coin/user/sell', data).then(handleSuccess).catch(handleError('Error update status'));
+        }
+
         function _postHistory(data) {
             return $http.post('/api/coin/user/history', data).then(handleSuccess).catch(handleError('Error update status'));
+        }
+
+        function _getAllUserHistory() {
+            return $http.get('/api/coin/user/history').then(handleSuccess).catch(handleError('Error update status'));
         }
 
         function _getAllUserCoins() {

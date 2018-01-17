@@ -1,24 +1,45 @@
 ﻿
-<div class='container-fluid ng-cloak' ng-controller="SellCoinsController as SellCoinsCtr">
+<link href="~/Content/AddSellStyles.css" rel="stylesheet" />
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
     @using Microsoft.AspNet.Identity
     @if (!Request.IsAuthenticated)
     {
-        <h1>Please Login</h1>
-        <h4></h4>
-        <br />
-        <h5>Guest user login info:</h5>
-        <p>Email: <span style="color:blue;font-weight:bold">  qwe@qwe.com</span></p>
-        <p>Password: <span style="color:blue;font-weight:bold">qweQ123!</span></p>
+        Response.Redirect("/Account/Login");
     }
-    else
-    {
-        <h2>Remove Coins</h2>
-        <h3>Remove Coins</h3>
+<div class='container-fluid ng-cloak' ng-controller="SellCoinsController as SellCoinsCtr">
+    <form name="form">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" ng-model="SellCoinsCtr.selected" class="form-control" id="firstInput" placeholder="Select Coin:"
+                       uib-typeahead="coin for coin in SellCoinsCtr.coinArrayNames | filter:$viewValue | limitTo:5"
+                       typeahead-no-results="noResults" typeahead-wait-ms="250" required>
+                <div id="noResults" ng-show="noResults">
+                    <i class="glyphicon glyphicon-remove"></i> Coin not found in wallets
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <input type="number" class="form-control" placeholder="Number Sold"
+                       step=any ng-model="SellCoinsCtr.inputs.numberSold" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <input type="number" class="form-control" placeholder="Current Price per Coin"
+                       step=any ng-model="SellCoinsCtr.inputs.currentPrice" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="margin-top:1%;">
+                <button id="submitButton" ng-click="SellCoinsCtr.send()" ng-disabled="form.$invalid" class="btn">Send</button>
+            </div>
+        </div>
+    </form>
 
-        <p>Use this area to provide additional information.</p>
-    }
-
-    </div>
+</div>
 @section scripts {
 
     <script src="~/Scripts/UserMain/SellCoinsController.js"></script>

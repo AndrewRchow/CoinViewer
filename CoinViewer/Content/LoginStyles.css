@@ -1,0 +1,78 @@
+﻿body {
+    background-color: rgba(38, 51, 61,1);
+}
+
+.row {
+    margin-top:10%;
+}
+h4 {
+    color: rgba(255, 255, 255, .8);
+}
+
+.form-group .checkbox text {
+    color: rgb(56, 68, 77);
+}
+
+.coinviewerLogo {
+    margin-top:7%;
+    height:100%;
+
+}
+#coinViewerLogo {
+    max-width: 80%;
+    height: auto;
+    width: auto; /* ie8 */
+    display: block;
+    margin: 0 auto;
+}
+
+.rightSide {
+    border-left: solid 1px rgb(56, 68, 77);
+    max-width: 100%;
+    padding-left: 12%;
+    margin-top: 2%;
+}
+
+    /*.rightSide #loginForm {
+        margin-left: 15%;
+    }*/
+
+input[type=text] {
+    background-color: rgba(38, 51, 61,1);
+    color: white;
+    border-color: rgb(56, 68, 77);
+    border-width: 1.5px;
+    height: 40px;
+    margin-top: 5%;
+    margin-bottom: 4%;
+}
+    input[type=text]:focus {
+        border-color: rgb(110, 218, 161);
+
+    }
+
+
+input[type=password] {
+    background-color: rgba(38, 51, 61,1);
+    color: white;
+    border-color: rgb(56, 68, 77);
+    border-width: 1.5px;
+    height: 40px;
+    margin-bottom: 4%;
+}
+
+    input[type=password]:focus {
+        border-color: rgb(110, 218, 161);
+    }
+
+input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+    color: white;
+    background-color: rgb(110, 218, 161);
+    width: 100%;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    margin-bottom: 2%;
+}
+
+
+

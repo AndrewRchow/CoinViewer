@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace CoinViewer.Models.Domain
 {
-    public class AllCoins
+    public class History
     {
+        public string TransactionType { get; set; }
         public string CoinName { get; set; }
-        public string Symbol { get; set; }
-        public double NumberOfCoins { get; set; }
-        public int Id { get; set; }
-        public double AverageValue { get; set; }
+        public double NumberTraded { get; set; }
+        public double CoinPrice { get; set; }
+        public DateTime Date { get; set; }
+
     }
 }

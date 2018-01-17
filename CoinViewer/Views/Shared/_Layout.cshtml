@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>CoinViewer</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
@@ -17,68 +17,73 @@
     <script src="~/Scripts/mainApp.js"></script>
     <script src="~/Scripts/UserMain/NavbarController.js"></script>
     <script src="~/Scripts/UserMain/GenericService.js"></script>
+
+    <link href="~/Content/NavbarStyles.css" rel="stylesheet" />
 </head>
 <body>
-    @using Microsoft.AspNet.Identity
-    @if (!Request.IsAuthenticated)
-    {
+    <div class="ng-cloak" ng-controller="NavbarController as NavbarCtr">
+
+
+
+
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
+
                 <div class="navbar-header">
-                    @Html.ActionLink("Coin Viewer", "Dashboard", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    <img src="~/Imgs/CoinViewerLogo2.png" height="42" id="coinViewerLogo" />
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav"></ul>
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("DASHBOARD", "Index", "Home")</li>
+                        <li>@Html.ActionLink("ADD COINS", "AddCoins", "Home")</li>
+                        <li>@Html.ActionLink("SELL COINS", "SellCoins", "Home")</li>
+                        <li>@Html.ActionLink("HISTORY", "History", "Home")</li>
+                    </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
-            </div>
-        </div>
-    }
-    else
-    {
-        <div class="ng-cloak" ng-controller="NavbarController as NavbarCtr">
-            <div class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        @Html.ActionLink("Coin Viewer", "Dashboard", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
-                            <li>@Html.ActionLink("Add Coins", "AddCoins", "Home")</li>
-                            <li>@Html.ActionLink("Sell Coins", "SellCoins", "Home")</li>
-                            <li>@Html.ActionLink("History", "History", "Home")</li>
-                        </ul>
-                        @Html.Partial("_LoginPartial")
-                    </div>
-                </div>
-            </div>
-            <div class="navbar">
-                <div class="container">
-                    <ul class="nav navbar-nav">
-                        <li>Invested: ${{NavbarCtr.invested}}</li>
-                        <li>Current Coins Value: ${{NavbarCtr.currentCoins}}</li>
-                        <li>Revenue: ${{NavbarCtr.revenue}}</li>
-                        <li>Current Net Worth: ${{NavbarCtr.currentNet}}</li>
-                    </ul>
+                @*<p>Invested: ${{NavbarCtr.invested}}</p>
 
-                </div>
+                    <p>Current Coins Value: ${{NavbarCtr.currentCoins}}</p>
+                    <p>Revenue: ${{NavbarCtr.revenue}}</p>
+                    <p>Current Net Worth: ${{NavbarCtr.currentNet}}</p>*@
             </div>
         </div>
 
-    }
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <p>INVESTED</p>
+                        <span>${{NavbarCtr.invested}}</span>
+                    </div>
+                    <div class="col-xs-3">
+                        <p>ALL COINS</p>
+                        <span> ${{NavbarCtr.currentCoins}}</span>
+                    </div>
+                    <div class="col-xs-3">
+                        <p>REVENUE</p>
+                        <span>${{NavbarCtr.revenue}}</span>
+                    </div>
+                    <div class="col-xs-3" id="lastInfo">
+                        <p>NET WORTH</p>
+                        <span>${{NavbarCtr.currentNet}}</span>
+                    </div>
+                </div>
+            </div>
+
+    </div>
 
     <div class="container body-content">
+       
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+
+        <footer></footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

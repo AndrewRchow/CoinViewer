@@ -227,12 +227,18 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AddSellStyles.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\LoginStyles.css" />
+    <Content Include="Content\NavbarStyles.css" />
+    <Content Include="Content\TableTemplate.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imgs\CoinViewerLogo.png" />
+    <Content Include="Imgs\CoinViewerLogo2.png" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -254,10 +260,12 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\UserMain\AddCoinsController.js" />
     <Content Include="Scripts\UserMain\GenericService.js" />
+    <Content Include="Scripts\UserMain\HistoryController.js" />
     <Content Include="Scripts\UserMain\NavbarController.js" />
     <Content Include="Scripts\UserMain\SellCoinsController.js" />
     <Content Include="Scripts\UserMain\DashboardController.js" />
     <Content Include="Scripts\UserMain\userMainService.js" />
+    <None Include="Views\Shared\_LayoutNoNav.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -265,7 +273,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

@@ -43,13 +43,14 @@
                     if (vm.marketData[j].symbol == vm.userCoins[i].Symbol)
                     {
                         vm.currentCoins = vm.currentCoins + (vm.userCoins[i].NumberOfCoins * vm.marketData[j].price_usd);
+                        break
                     }
                 }
             }
-            vm.invested = data.Item.Invested;
-
-            vm.revenue = data.Item.Revenue;
-            vm.currentNet = vm.currentCoins + vm.revenue;
+            vm.currentCoins = vm.currentCoins.toFixed(2);
+            vm.invested = (data.Item.Invested).toFixed(2);
+            vm.revenue = (data.Item.Revenue).toFixed(2);
+            vm.currentNet = (parseFloat(vm.currentCoins, 10) + parseFloat(vm.revenue,10)).toFixed(2);
         }
 
 

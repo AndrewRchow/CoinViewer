@@ -16,7 +16,6 @@
         vm.$genericService = $genericService;
         vm.coinArrayNames = [];
         vm.coinArrayIds = [];
-        vm.currentPrice = undefined;
         vm.send = _send;
         vm.toastr = toastr;
 

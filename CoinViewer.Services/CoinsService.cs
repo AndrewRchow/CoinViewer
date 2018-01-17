@@ -39,6 +39,31 @@ namespace CoinViewer.Services
             }
         }
 
+        public void SellCoins(SellCoinsAddRequest model)
+        {
+
+            string userId = UserService.GetCurrentUserId();
+            if (userId != null)
+            {
+
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+                {
+                    conn.Open();
+                    {
+                        using (SqlCommand cmd = new SqlCommand("dbo.Users_SellCoins", conn))
+                        {
+                            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@UserId", userId);
+                            cmd.Parameters.AddWithValue("@CoinId", model.CoinId);
+                            cmd.Parameters.AddWithValue("@NumberSold", model.NumberSold);
+                            cmd.Parameters.AddWithValue("@CurrentPrice", model.CurrentPrice);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+        }
+
         public int AddHistory(TradeHistoryAddRequest model)
         {
 
@@ -155,6 +180,8 @@ namespace CoinViewer.Services
             model.CoinName = reader.GetString(index++);
             model.Symbol = reader.GetString(index++);
             model.NumberOfCoins = reader.GetDouble(index++);
+            model.Id = reader.GetInt32(index++);
+            model.AverageValue = reader.GetDouble(index++);
             index++;
             return model;
         }
@@ -192,6 +219,45 @@ namespace CoinViewer.Services
             model.Invested = reader.GetDouble(index++);
             model.Revenue = reader.GetDouble(index++);
 
+            return model;
+        }
+
+        public List<History> GetAllUserHistory()
+        {
+            string userId = UserService.GetCurrentUserId();
+            if (userId != null)
+            {
+                List<History> HistoryList = new List<History>();
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand("dbo.TradeHistory_GetUserHistory", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@UserId", userId);
+                        SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+                        while (reader.Read())
+                        {
+                            History model = Mapper4(reader);
+                            HistoryList.Add(model);
+                        }
+                    }
+                    conn.Close();
+                }
+                return HistoryList;
+            }
+            return null;
+        }
+        private History Mapper4(SqlDataReader reader)
+        {
+            History model = new History();
+            int index = 0;
+            model.TransactionType = reader.GetString(index++);
+            model.CoinName = reader.GetString(index++);
+            model.NumberTraded = reader.GetDouble(index++);
+            model.CoinPrice = reader.GetDouble(index++);
+            model.Date = reader.GetDateTime(index++);
+            index++;
             return model;
         }
     }

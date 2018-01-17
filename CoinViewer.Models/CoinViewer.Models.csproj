@@ -114,10 +114,12 @@
   <ItemGroup>
     <Compile Include="Domain\AllCoins.cs" />
     <Compile Include="Domain\Coin.cs" />
+    <Compile Include="Domain\History.cs" />
     <Compile Include="Domain\InvestmentNumbers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\AddCoinsAddRequest.cs" />
     <Compile Include="Requests\CoinNameAddRequest.cs" />
+    <Compile Include="Requests\SellCoinsAddRequest.cs" />
     <Compile Include="Requests\TradeHistoryAddRequest.cs" />
     <Compile Include="Response\BaseResponse.cs" />
     <Compile Include="Response\ErrorResponse.cs" />

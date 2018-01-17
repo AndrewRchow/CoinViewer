@@ -1,0 +1,47 @@
+﻿.topRow {
+    width: 100%;
+}
+
+
+
+.container .row .col-xs-3 {
+    text-align:center;
+    margin-top: 3%;
+    /*width: 15%;*/
+    color: white;
+    font-size: 2vw;
+    font-weight: 300;
+    /*margin-left: 2%;
+    padding-right: 3%;*/
+    border-left: solid 1px grey;
+}
+
+    .container .row .col-xs-3 > span {
+        color: rgb(110, 218, 161);
+    }
+
+
+.navBar {
+    text-decoration-color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+    font-weight: 400;
+}
+
+    .navbar-inverse .navbar-nav > li > a:hover {
+        color: rgb(110, 218, 161);
+    }
+
+
+.body {
+    background: linear-gradient(rgba(38, 51, 61,1), rgba(38, 51, 61,.9));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#coinViewerLogo {
+    margin-top:2.5%;
+}
+

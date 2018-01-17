@@ -1,57 +1,49 @@
-﻿
-<div class='container-fluid ng-cloak' ng-controller="AddCoinsController as AddCoinsCtr">
-    @using Microsoft.AspNet.Identity
-    @if (!Request.IsAuthenticated)
-    {
-        <h1>Please Login</h1>
-        <h4></h4>
-        <br />
-        <h5>Guest user login info:</h5>
-        <p>Email: <span style="color:blue;font-weight:bold">  qwe@qwe.com</span></p>
-        <p>Password: <span style="color:blue;font-weight:bold">qweQ123!</span></p>
-    }
-    else
-    {
-        <form name="form">
-            <div class="row">
-                <div class="col-md-6">
+﻿<link href="~/Content/AddSellStyles.css" rel="stylesheet" />
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Microsoft.AspNet.Identity
+@if (!Request.IsAuthenticated)
+{
+    Response.Redirect("/Account/Login");
+}
+<div class='container-fluid row ng-cloak' ng-controller="AddCoinsController as AddCoinsCtr">
+    <form name="form">
+        <div class="row">
+            <div class="col-md-6">
 
-                    <h3>Select Coin</h3>
-                    <input type="text" ng-model="AddCoinsCtr.selected"
-                           uib-typeahead="coin for coin in AddCoinsCtr.coinArrayNames | filter:$viewValue | limitTo:8"
-                           typeahead-no-results="noResults" typeahead-wait-ms="250"
-                           ng-click="AddCoinsCtr.test()" required>
-                    <div ng-show="noResults">
-                        <i class="glyphicon glyphicon-remove"></i> No Tradeable Coin Found
-                    </div>
+
+                <input type="text" ng-model="AddCoinsCtr.selected" class="form-control" id="firstInput" placeholder="Select Coin:"
+                       uib-typeahead="coin for coin in AddCoinsCtr.coinArrayNames | filter:$viewValue | limitTo:5"
+                       typeahead-no-results="noResults" typeahead-wait-ms="250" required>
+                <div id="noResults" ng-show="noResults">
+                    <i class="glyphicon glyphicon-remove"></i> No Tradeable Coin Found
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>Number Purchased</h3>
-                    <input type="number" ng-model="AddCoinsCtr.inputs.numberPurchased" required>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+
+                <input class="form-control" type="number" placeholder="Number Purchased"
+                       step=any ng-model="AddCoinsCtr.inputs.numberPurchased" required>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>Price Per Coin</h3>
-                    <input type="number" ng-model="AddCoinsCtr.inputs.currentPrice" required>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+
+                <input class="form-control" placeholder="Price Per Coin"
+                       type="number" step=any ng-model="AddCoinsCtr.inputs.currentPrice" required>
             </div>
-            <div class="row">
-                <div class="col-md-6" style="margin-top:1%;">
-                    <button ng-click="AddCoinsCtr.send()" ng-disabled="form.$invalid" class="btn">Send</button>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="margin-top:1%;">
+                <button id="submitButton" ng-click="AddCoinsCtr.send()" ng-disabled="form.$invalid" class="btn">SEND</button>
             </div>
-        </form>
-    }
+        </div>
+    </form>
+
 </div>
 
 @section scripts {
-
-
     <script src="~/Scripts/UserMain/AddCoinsController.js"></script>
-
-
-
 }

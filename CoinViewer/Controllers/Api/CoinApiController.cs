@@ -36,6 +36,25 @@ namespace CoinViewer.Controllers.Api
             }
         }
 
+        [Route("user/sell"), HttpPost]
+        public HttpResponseMessage SellCoins(SellCoinsAddRequest model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+            try
+            {
+                SuccessResponse resp = new SuccessResponse();
+                coinsService.SellCoins(model);
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+
         [Route("user/history"), HttpPost]
         public HttpResponseMessage AddHistory(TradeHistoryAddRequest model)
         {
@@ -47,6 +66,21 @@ namespace CoinViewer.Controllers.Api
             {
                 ItemResponse<int> resp = new ItemResponse<int>();
                 resp.Item = coinsService.AddHistory(model);
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+
+        [Route("user/history"), HttpGet]
+        public HttpResponseMessage GetAllUserHistory()
+        {
+            try
+            {
+                ItemsResponse<History> resp = new ItemsResponse<History>();
+                resp.Items = coinsService.GetAllUserHistory();
                 return Request.CreateResponse(HttpStatusCode.OK, resp);
             }
             catch (Exception ex)
