@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoinViewer.Models.Requests
+namespace CoinViewer
 {
     public class AddCoinsAddRequest
     {

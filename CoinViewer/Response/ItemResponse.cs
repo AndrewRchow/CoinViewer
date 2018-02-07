@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoinViewer.Models.Response
+namespace CoinViewer
 {
     /// <summary>
     /// This is an example of a Generic class that you will gain an understanding of

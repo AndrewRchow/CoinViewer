@@ -2,14 +2,17 @@
     width: 100%;
 }
 
-
+.lightGreen {
+    color: rgb(110, 218, 161);
+    text-decoration-color: rgb(110, 218, 161);
+}
 
 .container .row .col-xs-3 {
     text-align:center;
     margin-top: 3%;
     /*width: 15%;*/
     color: white;
-    font-size: 2vw;
+    font-size: 1.5vw;
     font-weight: 300;
     /*margin-left: 2%;
     padding-right: 3%;*/
@@ -19,6 +22,10 @@
     .container .row .col-xs-3 > span {
         color: rgb(110, 218, 161);
     }
+
+#lastInfo {
+    border-right: solid 1px grey;
+}
 
 
 .navBar {

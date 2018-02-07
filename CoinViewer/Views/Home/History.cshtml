@@ -1,7 +1,4 @@
 ﻿<link href="~/Content/TableTemplate.css" rel="stylesheet" />
-@{
-    Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
-}
     @using Microsoft.AspNet.Identity
     @if (!Request.IsAuthenticated)
     {
@@ -20,7 +17,7 @@
         </thead>
         <tbody class="table-hover">
             <tr ng-repeat="x in HistoryCtr.mainArray">
-                <td class="text-left">{{x.TransactionType}}</td>
+                <td class="text-left type">{{x.TransactionType}}</td>
                 <td class="text-left">{{x.CoinName}}</td>
                 <td class="text-left">{{x.NumberTraded}}</td>
                 <td class="text-left">$ {{x.CoinPrice}}</td>

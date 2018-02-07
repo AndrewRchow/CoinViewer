@@ -3,9 +3,9 @@
     angular
         .module('mainApp')
         .controller('NavbarController', NavbarController);
-    NavbarController.$inject = ['$scope', '$window', '$genericService'];
+    NavbarController.$inject = ['$scope', '$window', '$genericService', '$location'];
 
-    function NavbarController($scope, $window, $genericService) {
+    function NavbarController($scope, $window, $genericService, $location) {
 
         var vm = this;
         vm.$onInit = _init;
@@ -16,6 +16,7 @@
         vm.currentNet = 0;
         vm.marketData = undefined;
         vm.userCoins = undefined;
+        vm.$location = $location;
 
         function _init() {
             vm.$genericService.getCoinMarketData()
@@ -50,16 +51,12 @@
             vm.currentCoins = vm.currentCoins.toFixed(2);
             vm.invested = (data.Item.Invested).toFixed(2);
             vm.revenue = (data.Item.Revenue).toFixed(2);
-            vm.currentNet = (parseFloat(vm.currentCoins, 10) + parseFloat(vm.revenue,10)).toFixed(2);
+            vm.currentNet = (parseFloat(vm.currentCoins, 10) + parseFloat(vm.revenue, 10)).toFixed(2);
         }
 
 
         function _callFail(error) {
             console.log(error);
         }
-
-
-       
-
     }
 })();
