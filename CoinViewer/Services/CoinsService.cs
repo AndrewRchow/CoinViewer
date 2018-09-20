@@ -33,6 +33,7 @@ namespace CoinViewer
                             cmd.ExecuteNonQuery();
                         }
                     }
+                    conn.Close();
                 }
             }
         }
@@ -58,6 +59,7 @@ namespace CoinViewer
                             cmd.ExecuteNonQuery();
                         }
                     }
+                    conn.Close();
                 }
             }
         }
@@ -68,7 +70,7 @@ namespace CoinViewer
             string userId = UserService.GetCurrentUserId();
             if (userId != null)
             {
-
+                SqlParameter idParam;
                 using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
                 {
                     conn.Open();
@@ -81,20 +83,21 @@ namespace CoinViewer
                             cmd.Parameters.AddWithValue("@CoinId", model.CoinId);
                             cmd.Parameters.AddWithValue("@NumberTraded", model.NumberPurchased);
                             cmd.Parameters.AddWithValue("@CoinPrice", model.CurrentPrice);
-                            SqlParameter idParam = cmd.Parameters.Add("@Id", SqlDbType.Int);
+                            idParam = cmd.Parameters.Add("@Id", SqlDbType.Int);
                             idParam.Direction = ParameterDirection.Output;
                             cmd.ExecuteNonQuery();
-                            return (int)idParam.Value;
-
                         }
                     }
+                    conn.Close();
                 }
+                return (int)idParam.Value;
             }
             return -1;
         }
 
         public int InsertCoinName(CoinNameAddRequest model)
         {
+            SqlParameter idParam;
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
                 conn.Open();
@@ -103,12 +106,14 @@ namespace CoinViewer
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@CoinName", model.CoinName);
                     cmd.Parameters.AddWithValue("@Symbol", model.Symbol);
-                    SqlParameter idParam = cmd.Parameters.Add("@Id", SqlDbType.Int);
+                    idParam = cmd.Parameters.Add("@Id", SqlDbType.Int);
                     idParam.Direction = ParameterDirection.Output;
                     cmd.ExecuteNonQuery();
-                    return (int)idParam.Value;
+                    
                 }
+                conn.Close();
             }
+            return (int)idParam.Value;
         }
 
         public List<Coin> SelectAllCoinNames()
