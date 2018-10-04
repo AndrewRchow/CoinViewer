@@ -52,6 +52,7 @@
             vm.invested = (data.Item.Invested).toFixed(2);
             vm.revenue = (data.Item.Revenue).toFixed(2);
             vm.currentNet = (parseFloat(vm.currentCoins, 10) + parseFloat(vm.revenue, 10)).toFixed(2);
+<<<<<<< HEAD
             if (vm.currentNet < vm.invested) {
                 $(".container #lastInfo span").addClass('red');
 
@@ -67,12 +68,15 @@
             //    vm.$genericService.postCoinName(coin)
             //        .then(_postCoinNameSuccess, _postCoinNameFail);
             //}
+=======
+>>>>>>> 24eef804daba33faa70092aca4950c202b1896bb
         }
 
 
         function _callFail(error) {
             console.log(error);
         }
+<<<<<<< HEAD
 
 
         //function _postCoinNameSuccess(data) {
@@ -83,5 +87,7 @@
         //    console.log(error);
         //}
 
+=======
+>>>>>>> 24eef804daba33faa70092aca4950c202b1896bb
     }
 })();
