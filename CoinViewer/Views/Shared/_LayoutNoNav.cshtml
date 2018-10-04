@@ -1,4 +1,5 @@
-﻿<html ng-app="mainApp">
+﻿<!DOCTYPE html>
+<html ng-app="mainApp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,12 +17,18 @@
     <script src="~/Scripts/mainApp.js"></script>
     <script src="~/Scripts/UserMain/NavbarController.js"></script>
     <script src="~/Scripts/UserMain/GenericService.js"></script>
+
     <link href="~/Content/NavbarStyles.css" rel="stylesheet" />
 </head>
 <body>
     <div class="ng-cloak" ng-controller="NavbarController as NavbarCtr">
+
+
+
+
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
+
                 <div class="navbar-header">
                     <img src="~/Imgs/CoinViewerLogo2.png" height="42" id="coinViewerLogo" />
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -30,6 +37,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -42,6 +50,7 @@
                 </div>
             </div>
         </div>
+
         <div class="container">
             <div class="row">
                 <div class="col-xs-3">
@@ -62,9 +71,14 @@
                 </div>
             </div>
         </div>
+
     </div>
+
     <div class="container body-content">
+
         @RenderBody()
+
+        <footer></footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

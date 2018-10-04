@@ -4,6 +4,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using CoinViewer.Models.Domain;
+using CoinViewer.Models.Requests;
+using CoinViewer.Models.Response;
+using CoinViewer.Services;
 
 
 namespace CoinViewer.Controllers.Api

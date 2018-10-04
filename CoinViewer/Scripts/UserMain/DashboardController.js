@@ -60,11 +60,9 @@
 
             }
       
-            //console.log(vm.mainArray);
+            console.log(vm.mainArray);
         
           
-
-
             console.log('hi');
         
         }
@@ -72,5 +70,6 @@
         function _callFail(error) {
             console.log(error);
         }
+       
     }
 })();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.Identity;
 
-namespace CoinViewer
+namespace CoinViewer.Services
 {
     public static class UserService
     {

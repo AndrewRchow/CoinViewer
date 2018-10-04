@@ -6,8 +6,10 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CoinViewer.Models.Domain;
+using CoinViewer.Models.Requests;
 
-namespace CoinViewer
+namespace CoinViewer.Services
 {
     public class CoinsService : ICoinsService
     {

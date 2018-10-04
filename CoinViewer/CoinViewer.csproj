@@ -217,29 +217,13 @@
     <Compile Include="Controllers\Api\CoinApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Domain\AllCoins.cs" />
-    <Compile Include="Domain\Coin.cs" />
-    <Compile Include="Domain\History.cs" />
-    <Compile Include="Domain\InvestmentNumbers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\ICoinsService.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Requests\AddCoinsAddRequest.cs" />
-    <Compile Include="Requests\CoinNameAddRequest.cs" />
-    <Compile Include="Requests\SellCoinsAddRequest.cs" />
-    <Compile Include="Requests\TradeHistoryAddRequest.cs" />
-    <Compile Include="Response\BaseResponse.cs" />
-    <Compile Include="Response\ErrorResponse.cs" />
-    <Compile Include="Response\ItemResponse.cs" />
-    <Compile Include="Response\ItemsResponse.cs" />
-    <Compile Include="Response\SuccessResponse.cs" />
-    <Compile Include="Services\CoinsService.cs" />
-    <Compile Include="Services\UserService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -338,6 +322,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoinViewer.Models\CoinViewer.Models.csproj">
+      <Project>{75c17b8f-3ac7-41c3-8d12-b98f1d88a4c2}</Project>
+      <Name>CoinViewer.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoinViewer.Services\CoinViewer.Services.csproj">
+      <Project>{d05f0d34-f7ae-4bd2-ae44-c63ffc051cba}</Project>
+      <Name>CoinViewer.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

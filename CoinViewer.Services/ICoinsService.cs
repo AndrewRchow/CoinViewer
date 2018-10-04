@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using CoinViewer.Models.Domain;
+using CoinViewer.Models.Requests;
 
-namespace CoinViewer
+namespace CoinViewer.Services
 {
     public interface ICoinsService
     {

@@ -1,4 +1,7 @@
-﻿<link href="~/Content/TableTemplate.css" rel="stylesheet" />
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
+}
+<link href="~/Content/TableTemplate.css" rel="stylesheet" />
 <div class='container-fluid row ng-cloak' ng-controller="DashboardController as DashboardCtr">
     @using Microsoft.AspNet.Identity
     @if (!Request.IsAuthenticated)
@@ -27,16 +30,6 @@
                 </tr>
                
             </tbody>
-            <tfoot>
-                <tr>
-                    <td class="text-left"></td>
-                    <td class="text-left"></td>
-                    <td class="text-left"></td>
-                    <td class="text-left"></td>
-                    <td class="text-left"></td>
-                    <td class="text-left"></td>
-                </tr>
-            </tfoot>
         </table>
 
 </div>

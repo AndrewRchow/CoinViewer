@@ -19,17 +19,8 @@
                 .then(_getAllUserHistorySuccess, _callFail);
         }
         function _getAllUserHistorySuccess(data) {
+            console.log(data);
             vm.mainArray = data.Items;
-            for (var i = 0; i < vm.mainArray.length; i++) {
-                if (vm.mainArray[i].TransactionType == "Buy") {
-                    var childNumb = i + 1;
-                    $("tbody tr:nth-child(" + childNumb + ")").find('.type').addClass('blue');      
-                }
-                if (vm.mainArray[i].TransactionType == "Sell") {
-                    var childNumb = i + 1;
-                    $("tbody tr:nth-child(" + childNumb + ")").find('.type').addClass('green');
-                }
-            }
         }
         
 
