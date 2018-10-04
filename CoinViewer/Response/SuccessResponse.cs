@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoinViewer.Models.Response
+namespace CoinViewer
 {
     /// <summary>
     /// This class simply sets IsSuccesful to true by default.

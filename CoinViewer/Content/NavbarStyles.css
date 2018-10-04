@@ -2,14 +2,21 @@
     width: 100%;
 }
 
+.lightGreen {
+    color: rgb(110, 218, 161);
+    text-decoration-color: rgb(110, 218, 161);
+}
 
+.red {
+    color:red !important;
+}
 
 .container .row .col-xs-3 {
     text-align:center;
     margin-top: 3%;
     /*width: 15%;*/
     color: white;
-    font-size: 2vw;
+    font-size: 1.5vw;
     font-weight: 300;
     /*margin-left: 2%;
     padding-right: 3%;*/
@@ -19,6 +26,10 @@
     .container .row .col-xs-3 > span {
         color: rgb(110, 218, 161);
     }
+
+#lastInfo {
+    border-right: solid 1px grey;
+}
 
 
 .navBar {
@@ -45,3 +56,24 @@
     margin-top:2.5%;
 }
 
+.metrics p, .metrics span {
+    font-size: 2.5rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .metrics p, .metrics span {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .metrics p, .metrics span {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .metrics p, .metrics span {
+        font-size: 1.2rem;
+    }
+}
