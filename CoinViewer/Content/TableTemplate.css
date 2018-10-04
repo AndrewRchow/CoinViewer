@@ -6,6 +6,9 @@
 .red {
     color: red;
 }
+.blue {
+    color: blue;
+}
 body {
     background: linear-gradient(rgba(38, 51, 61,1), rgba(38, 51, 61,.9));
     background-repeat: no-repeat;
@@ -64,7 +67,7 @@ th {
     border-bottom: 4px solid #9ea7af;
     border-right: 1px solid #343a45;
     /*font-size: 23px;*/
-    font-size: 2.2vw;
+    font-size: 1em;
     font-weight: 500;
     padding: 1%; /**/
    
@@ -125,12 +128,14 @@ tr {
 
 td {
     background: #FFFFFF;
-    padding-left:3%;
+    padding-left: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
     text-align: left;
     vertical-align: middle;
     font-weight: 300;
-    color:black;
-    font-size: 1.7vw;
+    color: black;
+    font-size: 1em;
     text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
     border-right: 1px solid #C1C3D1;
 }
@@ -162,3 +167,27 @@ td.text-center {
 td.text-right {
     text-align: right;
 }
+
+
+
+
+.table-fill {
+    font-size:2rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .table-fill {
+        font-size: 1.6rem;
+    }
+
+    .table-fill td {
+
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .table-fill {
+        font-size: 1.2rem;
+    }
+}
+

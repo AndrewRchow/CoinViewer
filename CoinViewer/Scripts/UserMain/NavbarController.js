@@ -3,9 +3,9 @@
     angular
         .module('mainApp')
         .controller('NavbarController', NavbarController);
-    NavbarController.$inject = ['$scope', '$window', '$genericService'];
+    NavbarController.$inject = ['$scope', '$window', '$genericService', '$location'];
 
-    function NavbarController($scope, $window, $genericService) {
+    function NavbarController($scope, $window, $genericService, $location) {
 
         var vm = this;
         vm.$onInit = _init;
@@ -16,6 +16,7 @@
         vm.currentNet = 0;
         vm.marketData = undefined;
         vm.userCoins = undefined;
+        vm.$location = $location;
 
         function _init() {
             vm.$genericService.getCoinMarketData()
@@ -50,9 +51,7 @@
             vm.currentCoins = vm.currentCoins.toFixed(2);
             vm.invested = (data.Item.Invested).toFixed(2);
             vm.revenue = (data.Item.Revenue).toFixed(2);
-<<<<<<< HEAD
             vm.currentNet = (parseFloat(vm.currentCoins, 10) + parseFloat(vm.revenue, 10)).toFixed(2);
-<<<<<<< HEAD
             if (vm.currentNet < vm.invested) {
                 $(".container #lastInfo span").addClass('red');
 
@@ -68,23 +67,21 @@
             //    vm.$genericService.postCoinName(coin)
             //        .then(_postCoinNameSuccess, _postCoinNameFail);
             //}
-=======
->>>>>>> 24eef804daba33faa70092aca4950c202b1896bb
-=======
-            vm.currentNet = (parseFloat(vm.currentCoins, 10) + parseFloat(vm.revenue,10)).toFixed(2);
->>>>>>> parent of 79a83c5... reattach db
         }
 
 
         function _callFail(error) {
             console.log(error);
         }
-<<<<<<< HEAD
 
 
-       
+        //function _postCoinNameSuccess(data) {
+        //    console.log(data);
+        //}
 
-=======
->>>>>>> 24eef804daba33faa70092aca4950c202b1896bb
+        //function _postCoinNameFail(error) {
+        //    console.log(error);
+        //}
+
     }
 })();

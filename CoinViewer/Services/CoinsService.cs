@@ -6,10 +6,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CoinViewer.Models.Domain;
-using CoinViewer.Models.Requests;
 
-namespace CoinViewer.Services
+namespace CoinViewer
 {
     public class CoinsService : ICoinsService
     {
@@ -35,7 +33,6 @@ namespace CoinViewer.Services
                             cmd.ExecuteNonQuery();
                         }
                     }
-                    conn.Close();
                 }
             }
         }
@@ -61,7 +58,6 @@ namespace CoinViewer.Services
                             cmd.ExecuteNonQuery();
                         }
                     }
-                    conn.Close();
                 }
             }
         }
@@ -72,7 +68,7 @@ namespace CoinViewer.Services
             string userId = UserService.GetCurrentUserId();
             if (userId != null)
             {
-                SqlParameter idParam;
+
                 using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
                 {
                     conn.Open();
@@ -85,21 +81,20 @@ namespace CoinViewer.Services
                             cmd.Parameters.AddWithValue("@CoinId", model.CoinId);
                             cmd.Parameters.AddWithValue("@NumberTraded", model.NumberPurchased);
                             cmd.Parameters.AddWithValue("@CoinPrice", model.CurrentPrice);
-                            idParam = cmd.Parameters.Add("@Id", SqlDbType.Int);
+                            SqlParameter idParam = cmd.Parameters.Add("@Id", SqlDbType.Int);
                             idParam.Direction = ParameterDirection.Output;
                             cmd.ExecuteNonQuery();
+                            return (int)idParam.Value;
+
                         }
                     }
-                    conn.Close();
                 }
-                return (int)idParam.Value;
             }
             return -1;
         }
 
         public int InsertCoinName(CoinNameAddRequest model)
         {
-            SqlParameter idParam;
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
                 conn.Open();
@@ -108,14 +103,12 @@ namespace CoinViewer.Services
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@CoinName", model.CoinName);
                     cmd.Parameters.AddWithValue("@Symbol", model.Symbol);
-                    idParam = cmd.Parameters.Add("@Id", SqlDbType.Int);
+                    SqlParameter idParam = cmd.Parameters.Add("@Id", SqlDbType.Int);
                     idParam.Direction = ParameterDirection.Output;
                     cmd.ExecuteNonQuery();
-                    
+                    return (int)idParam.Value;
                 }
-                conn.Close();
             }
-            return (int)idParam.Value;
         }
 
         public List<Coin> SelectAllCoinNames()

@@ -1,15 +1,20 @@
-﻿<!DOCTYPE html>
-<html ng-app="mainApp">
+﻿<html ng-app="mainApp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoinViewer</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/LoginStyles.css" rel="stylesheet" />
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.1.3.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="~/Scripts/plugins/angular-toastr.tpls.js"></script>
+    <link href="~/Scripts/plugins/angular-toastr.css" rel="stylesheet" />
+    <script src="~/Scripts/mainApp.js"></script>
 </head>
 <body>
-<<<<<<< HEAD
     @using Microsoft.AspNet.Identity
     @if (!Request.IsAuthenticated)
     {
@@ -46,11 +51,7 @@
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
             <div class="container metrics">
-=======
-            <div class="container">
->>>>>>> 24eef804daba33faa70092aca4950c202b1896bb
                 <div class="row">
                     <div class="col-xs-3">
                         <p>INVESTED</p>
@@ -75,15 +76,12 @@
             @RenderBody()
         </div>
     }
-=======
-    <div class="container body-content">
-        @RenderBody()
-        <footer></footer>
-    </div>
->>>>>>> parent of 79a83c5... reattach db
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+
+
